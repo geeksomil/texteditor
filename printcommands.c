@@ -9,7 +9,9 @@ void printCommands()
      {"cn","create a new file"},
     {"cw" , "count no of words"},
     {"r","read file"},
-    {"show","show all commands"}};
+    {"show","show all commands"},
+    {"ap","append file"}
+};
     for (int i = 0; i < 5; i++)
     {
         int n = strlen(commands[i][0]);

@@ -5,7 +5,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wint-conversion"
 #pragma GCC diagnostic ignored "-Wincompatible-pointer-types"
-void leftshift(char lines[10000],int p, int n){
+void lshift(char lines[10000],int p, int n){
 int t=p;   
 while(t>0 && t<n){
    lines[t-1]=lines[t];
@@ -16,7 +16,7 @@ while(t>0 && t<n){
    lines[t]=' ';
    for(int i=p-1;i<=n;i++) printw("%c",lines[i]);
 }
-void rightshift(char c,char lines[10000],int p,int n){
+void rshift(char c,char lines[10000],int p,int n){
   int t=n;
   while(t>p){
   lines[t]=lines[t-1];
@@ -25,16 +25,16 @@ void rightshift(char c,char lines[10000],int p,int n){
   lines[t]=c;
   for(int i=p+1;i<=n;i++) printw("%c",lines[i]);
 }
-char* createFile(char filename[100]){
-   if (access(filename, F_OK) != -1)
+char* appendFile(char filename[100]){
+   if (access(filename, F_OK) == -1)
     {
-        return "file exists";
+        return "file does not exist";
     }
     FILE *fptr;
-    fptr = fopen(filename, "w");
+    fptr = fopen(filename, "a");
     if (fptr == NULL)
     {
-        return "The file is not created due to some error";
+        return "The file is not appended  due to some error";
     }
    char lines[10000];
    char c;
@@ -66,17 +66,17 @@ char* createFile(char filename[100]){
   }
    else if(c==27) break;
    else if(c==10) {move(y,x+p-linestart);for(int i=p;i<=n;i++) printw(" ");
-move(y+1,x);rightshift(c,lines,p++,n++);lines[p-1]='\n';move(y+1,x);linestart=p;continue;}
+move(y+1,x);rshift(c,lines,p++,n++);lines[p-1]='\n';move(y+1,x);linestart=p;continue;}
    else if(c==KEY_BACKSPACE){
    if(x==0) continue;
-   leftshift(lines,p,n);
+   lshift(lines,p,n);
    p--;
    n--; 
   move(y,x);
   }
    else{
    if(p<n){
-   rightshift(c,lines,p,n);
+   rshift(c,lines,p,n);
    p++;
    n++;
    move(y,x);
@@ -88,7 +88,7 @@ move(y+1,x);rightshift(c,lines,p++,n++);lines[p-1]='\n';move(y+1,x);linestart=p;
    }
    }
     endwin();
-     fprintf(fptr, "%s", lines); // Write input to the file
+     fprintf(fptr, "%s\n", lines); // Write input to the file
     fclose(fptr);
-    return "file created succesfully";
+    return "file appended succesfully";
 }

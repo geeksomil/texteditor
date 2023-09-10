@@ -37,6 +37,13 @@ int main()
         {
             printCommands();
         }
+       else if(!strcmp(command, "ap")){
+          char filename[50];
+            printf("\nenter file name:");
+            scanf("%s", &filename);
+            printf("%s",appendFile(filename));
+
+       }
         else if (!strcmp(command, "0"))
         {
             break;
