@@ -49,6 +49,7 @@ char* createFile(char filename[100]){
    while(1){
    int c=getch();
    getyx(stdscr,y,x);   
+   printf("%d %d",x,y);
    if(c==KEY_RIGHT) {
     move(y,x+1);
     if(p==n){
@@ -60,6 +61,7 @@ char* createFile(char filename[100]){
    }
    }
    else if(c==KEY_LEFT){
+   if(x==0) continue;
    p--;
    move(y,x-1);
   }
@@ -67,9 +69,10 @@ char* createFile(char filename[100]){
    else if(c==10) {move(y,x+p-linestart);for(int i=p;i<=n;i++) printw(" ");
 move(y+1,x);rightshift(c,lines,p++,n++);lines[p-1]='\n';move(y+1,x);linestart=p;continue;}
    else if(c==KEY_BACKSPACE){
+   if(x==0) continue;
    leftshift(lines,p,n);
    p--;
-   n--;
+   n--; 
   move(y,x);
   }
    else{
