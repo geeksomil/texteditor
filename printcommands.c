@@ -12,7 +12,7 @@ void printCommands()
     {"show","show all commands"},
     {"ap","append file"}
 };
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
     {
         int n = strlen(commands[i][0]);
         printf("%s", commands[i][0]);
