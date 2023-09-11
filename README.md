@@ -1,14 +1,13 @@
-Text Editor in C
+#Text Editor in C
 This is a simple text editor programmed in the C language. The text editor provides three main operations: reading a file, writing to a file, and counting the number of words in a file. It utilizes the ncurses library for creating a text-based user interface.
 
-Features
+#Features
 Read a file.
 Write to a file.
 Count the number of words in a file.
 Text navigation using keys like right arrow, left arrow, backspace, and enter.
-Files
+#Files
 The project is structured into several files:
-
 createfunctions.c: Contains functions to create and manage the text editor's functionality.
 printcommands.c: Provides functions for displaying commands and messages to the user.
 readfile.c: Handles reading operations from a file.
